@@ -8,15 +8,15 @@ The system integrates a LangGraph-based workflow, E5 embedding retrieval, SKT A.
 
 Drafting administrative documents and national R&D project plans comes with the following challenges:
 
-	•	Complex rules and templates with high risk of omission
+  •	Complex rules and templates with high risk of omission
 	
-	•	Significant quality variance across authors
+  •	Significant quality variance across authors
 	
-	•	Time-consuming drafting process (often 1–2 days)
+  •	Time-consuming drafting process (often 1–2 days)
 	
-	•	Manual verification of regulation compliance required
+  •	Manual verification of regulation compliance required
 	
-	•	Long-document structure alignment is difficult for humans and AI
+  •	Long-document structure alignment is difficult for humans and AI
 
 To solve this, the project aims to deliver:
 
@@ -26,14 +26,14 @@ To solve this, the project aims to deliver:
 
 ## 2. System Overview
 
- 1) LangGraph-Based End-to-End Automation Pipeline
+### 1) LangGraph-Based End-to-End Automation Pipeline
 ```python
 (Start)
   ↓
 FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer → Exporter
 ```
 
- 2) Node Descriptions
+### 2) Node Descriptions
 ```python
 | Node            | Role                                                                 |
 |-----------------|----------------------------------------------------------------------|
@@ -73,17 +73,17 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Redundancy (↓)   | Repetitive content ratio                          |
 | Final Score      | Weighted aggregation on a 0–1 scale               |
 ```
- 1) Accuracy Formula
+### 1) Accuracy Formula
 
   Accuracy = \frac{entail}{entail + contra + unknown}
   
-	 •	entail: Supported claims
+  •	entail: Supported claims
 	 
-	 •	contra: Contradicted claims
+  •	contra: Contradicted claims
 	 
-	 •	unknown: Indeterminate claims
+  •	unknown: Indeterminate claims
 	 
-	 •	tot: Total number of extracted claims
+  •	tot: Total number of extracted claims
 
     ➡ Higher accuracy implies stronger internal factual consistency.
 
@@ -134,105 +134,105 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 ## 7. Development Journey – Problem → Ideation → Trial & Error → Solution → Impact
 
  1) Problem
-	•	Slow drafting process
+  •	Slow drafting process
 
-	•	Complex regulations
+  •	Complex regulations
 
-	•	High inconsistency among authors
+  •	High inconsistency among authors
 
-	•	Long document generation instability
+  •	Long document generation instability
 
- 3) Ideation (Technical Challenges)
-	•	Beyond auto-completion: requires rule-compliance + quality control
+ 2) Ideation (Technical Challenges)
+  •	Beyond auto-completion: requires rule-compliance + quality control
 
-	•	Long-context alignment essential
+  •	Long-context alignment essential
 
-	•	Redundancy suppression required
+  •	Redundancy suppression required
 
- 4) Implementation Efforts
-	•	Analyzed administrative regulations & R&D templates
+ 3) Implementation Efforts
+  •	Analyzed administrative regulations & R&D templates
 
-	•	Structured Annex Form #2 (National R&D Plan Format)
+  •	Structured Annex Form #2 (National R&D Plan Format)
 
-	•	Compared E5-Large vs. CDE-v2
+  •	Compared E5-Large vs. CDE-v2
 
-	•	Built BM25 + FAISS hybrid retriever
+  •	Built BM25 + FAISS hybrid retriever
 
-	•	Designed quality metrics: Accuracy, Fluency, Coherence, Redundancy
+  •	Designed quality metrics: Accuracy, Fluency, Coherence, Redundancy
 
- 5) Trial & Error
-	•	Redundancy in long generation → improved chunking strategy
+ 4) Trial & Error
+  •	Redundancy in long generation → improved chunking strategy
 
-	•	Missing mandatory fields → Format Validator introduced
+  •	Missing mandatory fields → Format Validator introduced
 
-	•	Hallucinations → stronger retrieval tuning
+  •	Hallucinations → stronger retrieval tuning
 
- 6) Solution
-	•	Completed LangGraph-based conditional workflow
+ 5) Solution
+  •	Completed LangGraph-based conditional workflow
 
-	•	Integrated Local LLM + Hybrid Retrieval
+  •	Integrated Local LLM + Hybrid Retrieval
 
-	•	Added NLI-based validator for stable quality control
+  •	Added NLI-based validator for stable quality control
 
- 7) Impact
-	•	reduction in document creation time
+ 6) Impact
+  •	reduction in document creation time
+ 
+  • increased rule/template compliance through auto-validation
 
-  	• increased rule/template compliance through auto-validation
+  •	Quality standardization → improved review success rate
 
-	•	Quality standardization → improved review success rate
-
-	•	Serves as an internal “AI Document Assistant” for admin & R&D teams
+  •	Serves as an internal “AI Document Assistant” for admin & R&D teams
 
 ⸻
 
 ## 8. Architecture Visualization
 
-Layered Architecture
-	•	Data Layer: Regulation texts, templates, R&D guidelines
+### Layered Architecture
+  •	Data Layer: Regulation texts, templates, R&D guidelines
 	
-	•	Retrieval Layer: BM25 + FAISS hybrid search
+  •	Retrieval Layer: BM25 + FAISS hybrid search
 	
-	•	Generation Layer: E5-Large, CDE-v2, SKT AX 4.0 Light
+  •	Generation Layer: E5-Large, CDE-v2, SKT AX 4.0 Light
 	
-	•	Evaluation Layer: UNIEVAL-based scoring + NLI validator
+  •	Evaluation Layer: UNIEVAL-based scoring + NLI validator
 	
-	•	Export Layer: Automated document construction (DOCX/HTML)
+  •	Export Layer: Automated document construction (DOCX/HTML)
 
 ⸻
 
 ## 9. Future Work
 
 ### Technical Enhancements
-	•	Multimodal support (tables, images, scanned PDFs)
+  •	Multimodal support (tables, images, scanned PDFs)
 	
-	•	Domain-specific fine-tuning for administrative & R&D LLMs
+  •	Domain-specific fine-tuning for administrative & R&D LLMs
 	
-	•	Format Validator 2.0 with stricter structure checking
+  •	Format Validator 2.0 with stricter structure checking
 
 ### User Experience Improvements
-	•	Draft → Review → Final workflow UI
+  •	Draft → Review → Final workflow UI
 	
-	•	Real-time Co-pilot mode for live violation checking
+  •	Real-time Co-pilot mode for live violation checking
 	
-	•	Template auto-recommendation
+  •	Template auto-recommendation
 
 ### Quality Management Upgrades
-	•	Improved redundancy detection
+  •	Improved redundancy detection
 	
-	•	Self-feedback LLM processing loop
+  •	Self-feedback LLM processing loop
 
 ### Organizational Integration
-	•	Connect with internal rulebooks, manuals, and past submissions
+  •	Connect with internal rulebooks, manuals, and past submissions
 	
-	•	Department-specific document style optimization
+  •	Department-specific document style optimization
 	
-	•	On-premises deployment for sensitive materials
+  •	On-premises deployment for sensitive materials
 
 ### Long-Term Vision
 
-	• Toward a “Document Co-Pilot Platform” that automates:
+  • Toward a “Document Co-Pilot Platform” that automates:
 	
-	• Drafting → Review → Collaboration → Approval → Archiving
+  • Drafting → Review → Collaboration → Approval → Archiving
 
 ⸻
 
@@ -245,12 +245,13 @@ Layered Architecture
 ⸻
 
 📎 References
-	•	Reimers & Gurevych (2019). Sentence-BERT. ACL.
 	
-	•	Wang et al. (2023). UniEval. ACL.
+• Reimers & Gurevych (2019). Sentence-BERT. ACL.
 	
-	•	Cer et al. (2018). Universal Sentence Encoder.
+• Wang et al. (2023). UniEval. ACL.
 	
-	•	Goyal et al. (2022). Factual consistency via QA-based Metrics.
+• Cer et al. (2018). Universal Sentence Encoder.
 	
-	•	Lin (2004). ROUGE. ACL Workshop.
+• Goyal et al. (2022). Factual consistency via QA-based Metrics.
+	
+• Lin (2004). ROUGE. ACL Workshop.
