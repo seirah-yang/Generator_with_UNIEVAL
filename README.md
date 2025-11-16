@@ -7,13 +7,19 @@ The system integrates a LangGraph-based workflow, E5 embedding retrieval, SKT A.
 ## 1. Problem Statement (Practical Pain Points)
 
 Drafting administrative documents and national R&D project plans comes with the following challenges:
+
 	•	Complex rules and templates with high risk of omission
+	
 	•	Significant quality variance across authors
+	
 	•	Time-consuming drafting process (often 1–2 days)
+	
 	•	Manual verification of regulation compliance required
+	
 	•	Long-document structure alignment is difficult for humans and AI
 
 To solve this, the project aims to deliver:
+
 “Automated drafting → automated compliance validation → automated formatting.”
 
 ⸻
@@ -42,7 +48,7 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 ⸻
 
 ## 3. Core Components
-```
+```python
 | Component              | Description                                          |
 |------------------------|------------------------------------------------------|
 | Embedding Model        | intfloat/e5-large for high-precision semantic retrieval |
@@ -70,9 +76,13 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
  1) Accuracy Formula
 
   Accuracy = \frac{entail}{entail + contra + unknown}
+  
 	 •	entail: Supported claims
+	 
 	 •	contra: Contradicted claims
+	 
 	 •	unknown: Indeterminate claims
+	 
 	 •	tot: Total number of extracted claims
 
     ➡ Higher accuracy implies stronger internal factual consistency.
@@ -102,7 +112,9 @@ Draft → Validate → Repair → Export (all automated)
 
 Structured based on:
 	•	Administrative Regulations (Presidential Decree / Enforcement Rules)
+	
 	•	National R&D Project Plan Template (Annex Form #2)
+	
 	•	R&D Strategic Plan Guidelines
 
  3) Self-Validation with NLI
@@ -123,36 +135,52 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
  1) Problem
 	•	Slow drafting process
+
 	•	Complex regulations
+
 	•	High inconsistency among authors
+
 	•	Long document generation instability
 
- 2) Ideation (Technical Challenges)
+ 3) Ideation (Technical Challenges)
 	•	Beyond auto-completion: requires rule-compliance + quality control
+
 	•	Long-context alignment essential
+
 	•	Redundancy suppression required
 
- 3) Implementation Efforts
+ 4) Implementation Efforts
 	•	Analyzed administrative regulations & R&D templates
+
 	•	Structured Annex Form #2 (National R&D Plan Format)
+
 	•	Compared E5-Large vs. CDE-v2
+
 	•	Built BM25 + FAISS hybrid retriever
+
 	•	Designed quality metrics: Accuracy, Fluency, Coherence, Redundancy
 
- 4) Trial & Error
+ 5) Trial & Error
 	•	Redundancy in long generation → improved chunking strategy
+
 	•	Missing mandatory fields → Format Validator introduced
+
 	•	Hallucinations → stronger retrieval tuning
 
- 5) Solution
+ 6) Solution
 	•	Completed LangGraph-based conditional workflow
+
 	•	Integrated Local LLM + Hybrid Retrieval
+
 	•	Added NLI-based validator for stable quality control
 
- 6) Impact
+ 7) Impact
 	•	reduction in document creation time
-  • increased rule/template compliance through auto-validation
+
+  	• increased rule/template compliance through auto-validation
+
 	•	Quality standardization → improved review success rate
+
 	•	Serves as an internal “AI Document Assistant” for admin & R&D teams
 
 ⸻
@@ -161,9 +189,13 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
 Layered Architecture
 	•	Data Layer: Regulation texts, templates, R&D guidelines
+	
 	•	Retrieval Layer: BM25 + FAISS hybrid search
+	
 	•	Generation Layer: E5-Large, CDE-v2, SKT AX 4.0 Light
+	
 	•	Evaluation Layer: UNIEVAL-based scoring + NLI validator
+	
 	•	Export Layer: Automated document construction (DOCX/HTML)
 
 ⸻
@@ -172,26 +204,34 @@ Layered Architecture
 
 ### Technical Enhancements
 	•	Multimodal support (tables, images, scanned PDFs)
+	
 	•	Domain-specific fine-tuning for administrative & R&D LLMs
+	
 	•	Format Validator 2.0 with stricter structure checking
 
 ### User Experience Improvements
 	•	Draft → Review → Final workflow UI
+	
 	•	Real-time Co-pilot mode for live violation checking
+	
 	•	Template auto-recommendation
 
 ### Quality Management Upgrades
 	•	Improved redundancy detection
+	
 	•	Self-feedback LLM processing loop
 
 ### Organizational Integration
 	•	Connect with internal rulebooks, manuals, and past submissions
+	
 	•	Department-specific document style optimization
+	
 	•	On-premises deployment for sensitive materials
 
 ### Long-Term Vision
 
 	• Toward a “Document Co-Pilot Platform” that automates:
+	
 	• Drafting → Review → Collaboration → Approval → Archiving
 
 ⸻
@@ -206,7 +246,11 @@ Layered Architecture
 
 📎 References
 	•	Reimers & Gurevych (2019). Sentence-BERT. ACL.
+	
 	•	Wang et al. (2023). UniEval. ACL.
+	
 	•	Cer et al. (2018). Universal Sentence Encoder.
+	
 	•	Goyal et al. (2022). Factual consistency via QA-based Metrics.
+	
 	•	Lin (2004). ROUGE. ACL Workshop.
