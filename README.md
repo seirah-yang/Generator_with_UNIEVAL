@@ -2,7 +2,7 @@
 Developed an advanced AI-driven document generation pipeline capable of automatically drafting, validating, and formatting R&D project plans, administrative reports, and internal documents.
 The system integrates a LangGraph-based workflow, E5 embedding retrieval, SKT A.X-4.0-Light LLM, and an XNLI-based compliance validator to ensure both factual correctness and policy alignment.
 
-⸻
+
 
 ## 1. Problem Statement (Practical Pain Points)
 
@@ -22,7 +22,6 @@ To solve this, the project aims to deliver:
 
 “Automated drafting → automated compliance validation → automated formatting.”
 
-⸻
 
 ## 2. System Overview
 
@@ -45,7 +44,7 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Exporter        | Outputs validated DOCX/HTML documents using Jinja2 & python-docx     |
 ```
 
-⸻
+
 
 ## 3. Core Components
 ```python
@@ -59,7 +58,7 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Evaluation Metrics     | UNIEVAL-style scoring framework                      |
 ```
 
-⸻
+
 
 ## 4. UNIEVAL-style Evaluation Metrics
 ```python
@@ -89,7 +88,7 @@ $$
 
     ➡ Higher accuracy implies stronger internal factual consistency.
 
-⸻
+
 
 ## 5. Compliance Evaluation (Policy Alignment)
 
@@ -102,7 +101,7 @@ $$
 | Threshold (0.8)    | Baseline for “Excellent” alignment           |
 ```
 
-⸻
+
 
 ## 6. Key Features
 
@@ -131,7 +130,7 @@ Detects missing mandatory fields (e.g., objectives, significance, expected outco
 
 Exports a UNIEVAL-style compliance table alongside the final document.
 
-⸻
+
 
 ## 7. Development Journey – Problem → Ideation → Trial & Error → Solution → Impact
 
@@ -185,7 +184,7 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
   •	Serves as an internal “AI Document Assistant” for admin & R&D teams
 
-⸻
+
 
 ## 8. Architecture Visualization
 
@@ -200,7 +199,7 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 	
   •	Export Layer: Automated document construction (DOCX/HTML)
 
-⸻
+
 
 ## 9. Future Work
 
@@ -236,7 +235,7 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 	
   • Drafting → Review → Collaboration → Approval → Archiving
 
-⸻
+
 
 ## 👩‍💻 Author
 
@@ -244,7 +243,7 @@ Exports a UNIEVAL-style compliance table alongside the final document.
     RN, MSN | TA | CRC | DM | AI Developer Trainee @ Alpaco
     Specialized in Clinical Data, R&D Document Automation, and LLM-driven Compliance Systems
 
-⸻
+
 
 📎 References
 	
