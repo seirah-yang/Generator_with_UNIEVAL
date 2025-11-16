@@ -74,9 +74,11 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Final Score      | Weighted aggregation on a 0–1 scale               |
 ```
 ### 1) Accuracy Formula
-
-  Accuracy = \frac{entail}{entail + contra + unknown}
-  
+```md
+$$
+Accuracy = \frac{entail}{entail + contra + unknown}
+$$
+```
   •	entail: Supported claims
 	 
   •	contra: Contradicted claims
@@ -104,28 +106,28 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 
 ## 6. Key Features
 
- 1) Fully Automated Multi-Stage Pipeline
+### 1) Fully Automated Multi-Stage Pipeline
 
 Draft → Validate → Repair → Export (all automated)
 
- 2) Regulation-Aware Document Generation
+### 2) Regulation-Aware Document Generation
 
 Structured based on:
-	•	Administrative Regulations (Presidential Decree / Enforcement Rules)
+  •	Administrative Regulations (Presidential Decree / Enforcement Rules)
 	
-	•	National R&D Project Plan Template (Annex Form #2)
+  •	National R&D Project Plan Template (Annex Form #2)
 	
-	•	R&D Strategic Plan Guidelines
+  •	R&D Strategic Plan Guidelines
 
- 3) Self-Validation with NLI
+### 3) Self-Validation with NLI
 
 Automatic detection of inconsistencies, hallucinations, and policy violations.
 
- 4) Format Compliance Assurance
+### 4) Format Compliance Assurance
 
 Detects missing mandatory fields (e.g., objectives, significance, expected outcomes).
 
- 5) Evaluation Dashboard
+### 5) Evaluation Dashboard
 
 Exports a UNIEVAL-style compliance table alongside the final document.
 
@@ -133,7 +135,7 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
 ## 7. Development Journey – Problem → Ideation → Trial & Error → Solution → Impact
 
- 1) Problem
+### 1) Problem
   •	Slow drafting process
 
   •	Complex regulations
@@ -142,14 +144,14 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
   •	Long document generation instability
 
- 2) Ideation (Technical Challenges)
+### 2) Ideation (Technical Challenges)
   •	Beyond auto-completion: requires rule-compliance + quality control
 
   •	Long-context alignment essential
 
   •	Redundancy suppression required
 
- 3) Implementation Efforts
+### 3) Implementation Efforts
   •	Analyzed administrative regulations & R&D templates
 
   •	Structured Annex Form #2 (National R&D Plan Format)
@@ -160,21 +162,21 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
   •	Designed quality metrics: Accuracy, Fluency, Coherence, Redundancy
 
- 4) Trial & Error
+### 4) Trial & Error
   •	Redundancy in long generation → improved chunking strategy
 
   •	Missing mandatory fields → Format Validator introduced
 
   •	Hallucinations → stronger retrieval tuning
 
- 5) Solution
+### 5) Solution
   •	Completed LangGraph-based conditional workflow
 
   •	Integrated Local LLM + Hybrid Retrieval
 
   •	Added NLI-based validator for stable quality control
 
- 6) Impact
+### 6) Impact
   •	reduction in document creation time
  
   • increased rule/template compliance through auto-validation
