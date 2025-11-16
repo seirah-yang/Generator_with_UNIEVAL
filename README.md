@@ -74,7 +74,7 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Final Score      | Weighted aggregation on a 0–1 scale               |
 ```
 ### 1) Accuracy Formula
-```md
+```
 $$
 Accuracy = \frac{entail}{entail + contra + unknown}
 $$
