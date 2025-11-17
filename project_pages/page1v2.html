@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuLab - Homepage</title>
+  <style>
+    @font-face {
+  font-family: 'GabiaNull', 'GabiaGosran';
+  src: url('./fonts/GabiaNull.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'GabiaNull', sans-serif;
+  background-color: #f5f7fa;
+}
+/* Footer */
+footer {
+  background: #122440;
+  color: white;
+  padding: 1px 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+/* 헤더 + 좌 DocuLab / 우 버튼*/
+header {
+  background: linear-gradient(180deg, #120277 0%, #122440 100%);
+  color: white;
+  padding: 25px 40px; /* 좌측 여백 */
+  text-align: left;   /* 왼쪽 정렬 */
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, #120277 0%, #122440 100%);
+  color: white;
+  padding: 20px 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.header-flex h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+/* 내비게이션 바 */
+nav {
+  display: flex;
+  gap: 12px;
+}
+
+nav button {
+  background-color: #38cb9a;   /*배경그린 */
+  color: #ffffff;         /* 흰색 글씨 */
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+nav button:hover {
+  background-color: #2da885;   /* hover 시 약간 진한 민트 */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(56,203,154,0.3);
+}
+
+/* Main Container */
+.main-container {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f5f7fa;
+}
+
+/* ===============================
+   Carousel
+================================*/
+.carousel {
+  position: relative;
+  margin: 30px auto;
+  width: 80%;
+  height: 320px;
+  background: #029aff; /* 💙 단색 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(104, 99, 255, 0.2);
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  background: #029aff;
+}
+
+/* ===============================
+   Buttons
+================================*/
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel button:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.carousel .left { left: 15px; }
+.carousel .right { right: 15px; }
+
+/* Content Section */
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.content-box {
+  width: 240px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.content-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(104, 99, 255, 0.15);
+}
+
+/* Text and Icons */
+.smile {
+  margin-top: 20px;
+  font-size: 32px;
+  color: #febc32;
+}
+
+.maru {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #919191;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h2 style="left: auto;" class="logo">(로고)DocuLab</h2>
+  <nav>
+    <button>로그인</button>
+    <button>회원가입</button>
+  </nav></header>
+
+  <div class="top-bar">
+  <div class="right">
+    <nav>
+    <button>보고서 | 서식</button>
+    <button>통계Tool</button>
+    <button>공지 | 게시판</button>
+    </nav>
+    </div>
+    </div>
+  <div class="carousel">
+  <div class="carousel-inner" id="carousel-inner">
+    <div class="carousel-item" style="background:#029aff;">1번 페이지</div>
+    <div class="carousel-item" style="background:#6863ff;">2번 페이지</div>
+    <div class="carousel-item" style="background:#38cb9a;">3번 페이지</div>
+    <div class="carousel-item" style="background:#febc32; color:#122440;">4번 페이지</div>
+  </div>
+  <button class="left" onclick="prevSlide()">&#10094;</button>
+  <button class="right" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll('.carousel-item');
+const total = slides.length;
+
+function showSlide(i) {
+  const inner = document.getElementById('carousel-inner');
+  if (i >= total) index = 0;
+  else if (i < 0) index = total - 1;
+  else index = i;
+  inner.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  showSlide(index + 1);
+}
+
+function prevSlide() {
+  showSlide(index - 1);
+}
+</script>
+
+    <div class="content">
+      <div class="content-box">
+        <strong>공지사항</strong>
+        <ul>
+          <li>공지사항 1</li>
+          <li>공지사항 2</li>
+          <li>공지사항 3</li>
+        </ul>
+      </div>
+      <div class="content-box">
+        <strong>게시판</strong>
+        <ul>
+          <li>글: 제목 1</li>
+          <li>글: 제목 2</li>
+          <li>글: 제목 3</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer>
+    Footer
+  </footer>
+</body>
+</html>

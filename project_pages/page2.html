@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuLab 보고서 | 서식 페이지</title>
+  <style>
+    /* ====== 기본 글꼴 ====== */
+    @font-face {
+      font-family: 'GabiaNull';
+      src: url('./fonts/GabiaNull.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'GabiaNull', sans-serif;
+      background: #f5f7fa;
+      color: #122440;
+    }
+
+    /* ====== Header ====== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, #120277 0%, #122440 100%);
+      color: white;
+      padding: 20px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    /* ====== 상단 네비게이션 ====== */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #122440;
+      padding: 10px 40px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background-color: #38cb9a;  /* 💚 초록 버튼 */
+      color: #ffffff;             /* 🤍 흰 글씨 */
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    nav button:hover {
+      background-color: #2da885;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(56,203,154,0.3);
+    }
+
+    /* ====== 페이지 본문 ====== */
+    .container {
+      display: flex;
+      height: calc(100vh - 200px);
+      padding: 0;
+    }
+
+    /* ====== 사이드바 ====== */
+    .sidebar {
+      width: 220px;
+      background: #e8ebf2;
+      padding: 20px;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .sidebar strong {
+      display: block;
+      color: #120277;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* ====== 메인 영역 ====== */
+    .main {
+      flex: 1;
+      padding: 25px;
+      box-sizing: border-box;
+      background: #f9fafc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tabs {
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      background: #6863ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .tabs button:hover {
+      background: #564fd8;
+    }
+
+    .content-box {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow-y: auto;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .actions button {
+      background-color: #38cb9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .actions button:hover {
+      background-color: #2da885;
+    }
+
+    /* ====== 우측 패널 ====== */
+    .right-panel {
+      width: 220px;
+      background: #e8ebf2;
+      padding: 20px;
+      box-sizing: border-box;
+      border-left: 1px solid #ccc;
+    }
+
+    .search {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .search input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .search button {
+      background: #6863ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .search button:hover {
+      background: #564fd8;
+    }
+
+    .ep {
+      text-align: center;
+      margin: 10px 0;
+      color: gray;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #120277;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ====== Header ====== -->
+  <header>
+    <h2 style="left: auto;" class="logo;">DocuLab: 보고서 | 서식</h2>
+    <nav class="right"><button>Logout</button></nav>
+  </header>
+
+  <!-- ====== Navigation ====== -->
+  <div class="top-bar">
+  <div class="right">
+  <nav>
+    <button>보고서 | 서식</button>
+    <button>통계Tool</button>
+    <button>공지 | 게시판</button>
+  </nav>
+  </div>
+  </div>
+  <!-- ====== Main Layout ====== -->
+  <div class="container">
+    <!-- 사이드바 -->
+    <div class="sidebar">
+      <ul>
+        <li><strong>R&D 자료실</strong></li>
+        <li>- R&D 연구계획서</li>
+        <li>- R&D 연구보고서</li>
+        <li><strong>행정보고서</strong></li>
+        <li>- 보고서 및 대시보드</li>
+        <li><strong>연구소 자료실</strong></li>
+        <li>- 연구계획서</li>
+        <li>- 연구보고서</li>
+        <li><strong>문서 서식</strong></li>
+        <li>- 부서별 서식</li>
+        <li>- R&D 문서 서식</li>
+        <li><strong>사내규정</strong></li>
+        <li>- 부서별 규정</li>
+        <li><strong>국내/외 가이드라인</strong></li>
+        <li>- 국내 가이드라인</li>
+        <li>- 국외 가이드라인</li>
+      </ul>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="main">
+      <div class="tabs">
+        <button>전자문서 상신</button>
+      </div>
+      <div class="content-box">
+        문서 작성 공간
+      </div>
+      <div class="actions">
+        <button>임시 저장</button>
+        <button>다운로드</button>
+      </div>
+    </div>
+
+    <!-- 오른쪽 패널 -->
+    <div class="right-panel">
+      <div class="search">
+        <input type="text" placeholder="문서 검색">
+        <button>검색</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep">ⓒ 2025 DocuLab. All rights reserved.</div>
+
+  <footer>
+    Footer
+  </footer>
+</body>
+</html>

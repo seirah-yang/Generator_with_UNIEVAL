@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuLab: 통계Tool</title>
+  <style>
+    /* ===== 폰트 설정 ===== */
+    @font-face {
+      font-family: 'GabiaNull';
+      src: url('./fonts/GabiaNull.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'GabiaNull', sans-serif;
+      background: #f5f7fa;
+      color: #122440;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(180deg, #120277 0%, #122440 100%);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #122440;
+      padding: 10px 40px;
+      gap: 10px;
+    }
+
+    nav button {
+      background-color: #38cb9a;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    nav button:hover {
+      background-color: #2da885;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(56,203,154,0.3);
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      display: flex;
+      height: calc(100vh - 200px);
+      padding: 20px;
+      gap: 20px;
+      box-sizing: border-box;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      width: 260px;
+      background: #e8ebf2;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .sidebar label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #120277;
+    }
+
+    .sidebar input,
+    .sidebar select {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'GabiaNull', sans-serif;
+    }
+
+    .sidebar input:focus,
+    .sidebar select:focus {
+      outline: none;
+      border-color: #6863ff;
+      box-shadow: 0 0 5px rgba(104,99,255,0.3);
+    }
+
+    .sidebar button {
+      background-color: #38cb9a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: #2da885;
+      transform: translateY(-2px);
+    }
+
+    .sidebar .upload-note {
+      margin-top: 15px;
+      font-size: 14px;
+      color: gray;
+      text-align: center;
+    }
+
+    /* ===== Main Content ===== */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      gap: 15px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 5px;
+    }
+
+    .top-bar button {
+      background: #6863ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .top-bar button:hover {
+      background: #564fd8;
+    }
+
+    .preview-box {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== Bottom Section ===== */
+    .bottom-box {
+      display: flex;
+      gap: 20px;
+    }
+
+    .bottom-left,
+    .bottom-right {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .bottom-left h3,
+    .bottom-right h3 {
+      margin-top: 0;
+      color: #120277;
+      font-size: 1.1rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #120277;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <h2 style="left: auto;"  class="logo">DocuLab: 통계Tool</h2>
+    <nav class="right"><button>Logout</button></nav>
+  </header>
+
+  <!-- ===== Navigation ===== -->
+    <div class="top-bar">
+    <div class = "right">
+  <nav>
+    <button>보고서 | 서식</button>
+    <button>통계Tool</button>
+    <button>공지 | 게시판</button>
+  </nav>
+  </div>
+</div>
+  <!-- ===== Body Layout ===== -->
+  <div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <label for="var1">변수1</label>
+      <input type="text" id="var1" placeholder="값 입력">
+
+      <label for="var2">변수2</label>
+      <input type="text" id="var2" placeholder="값 입력">
+
+      <label for="var3">변수3</label>
+      <input type="text" id="var3" placeholder="값 입력">
+
+      <label for="power">검정력</label>
+      <input type="text" id="power" placeholder="값 입력">
+
+      <label for="method">Method</label>
+      <input type="text" id="method" placeholder="method 입력">
+
+      <div style="display:flex; justify-content:space-between; margin-top:15px;">
+        <button>검색</button>
+        <button>초기화</button>
+      </div>
+
+      <label for="date">날짜</label>
+      <input type="date" id="date">
+
+      <label for="file">파일 업로드</label>
+      <input type="file" id="file">
+
+      <label for="type">자료유형</label>
+      <select id="type">
+        <option>R&D</option>
+        <option>연구자료</option>
+      </select>
+
+      <div style="display:flex; justify-content:space-between; margin-top:15px;">
+        <button>등록</button>
+        <button>초기화</button>
+      </div>
+
+      <div class="upload-note">DB Upload 🔄</div>
+    </div>
+
+    <!-- Main Area -->
+    <div class="main">
+      <div class="top-bar">
+        <button>로그아웃</button>
+      </div>
+
+      <div class="preview-box">
+        미리보기 화면
+      </div>
+
+      <div class="bottom-box">
+        <div class="bottom-left">
+          <h3>📂 최근 업로드</h3>
+          <p>최근 업로드된 데이터가 여기에 표시됩니다.</p>
+        </div>
+
+        <div class="bottom-right">
+          <h3> 관련 통계 추천</h3>
+          <p>업로드된 자료에 기반한 추천 통계 분석이 표시됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 DocuLab. All rights reserved.
+  </footer>
+</body>
+</html>
