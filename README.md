@@ -33,7 +33,7 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 ```
 
 ### 2) Node Descriptions
-```python
+
 | Node            | Role                                                                 |
 |-----------------|----------------------------------------------------------------------|
 | FormSearchNode  | Classifies document type, retrieves relevant regulations/templates, maps metadata |
@@ -42,12 +42,10 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Validator       | Conducts rule-based + NLI-based compliance and factuality validation |
 | Repairer        | Automatically rewrites non-compliant or incoherent sections          |
 | Exporter        | Outputs validated DOCX/HTML documents using Jinja2 & python-docx     |
-```
-
 
 
 ## 3. Core Components
-```python
+
 | Component              | Description                                          |
 |------------------------|------------------------------------------------------|
 | Embedding Model        | intfloat/e5-large for high-precision semantic retrieval |
@@ -56,12 +54,10 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Validation Model       | XLM-RoBERTa-Large-XNLI for semantic entailment       |
 | Exporter               | Automated DOCX / HTML generator                      |
 | Evaluation Metrics     | UNIEVAL-style scoring framework                      |
-```
-
 
 
 ## 4. UNIEVAL-style Evaluation Metrics
-```python
+
 |   Metric         |   Description                                     |
 |------------------|---------------------------------------------------|
 | Accuracy         | Ratio of claims supported by internal evidence    |
@@ -71,7 +67,8 @@ FormSearchNode → ContextBuilder → DraftWriter → Validator → Repairer →
 | Consistency      | Internal logical and numerical consistency        |
 | Redundancy (↓)   | Repetitive content ratio                          |
 | Final Score      | Weighted aggregation on a 0–1 scale               |
-```
+
+
 ### 1) Accuracy Formula
 
 $$
@@ -89,18 +86,14 @@ $$
     ➡ Higher accuracy implies stronger internal factual consistency.
 
 
-
 ## 5. Compliance Evaluation (Policy Alignment)
 
-```python
 |   Metric           |   Meaning                                    |
 |--------------------|----------------------------------------------|
 | Compliance Score   | Regulatory alignment ratio                   |
 | sim_n              | Semantic similarity ≥ 0.8 for alignment      |
 | Top-k References   | Key supporting regulation excerpts           |
 | Threshold (0.8)    | Baseline for “Excellent” alignment           |
-```
-
 
 
 ## 6. Key Features
@@ -239,13 +232,13 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 
 ## 👩‍💻 Author
 
-#### Sora Yang
+### Sora Yang
     RN, MSN | TA | CRC | DM | AI Developer Trainee @ Alpaco
     Specialized in Clinical Data, R&D Document Automation, and LLM-driven Compliance Systems
 
 
 
-📎 References
+### 📎 References
 	
 • Reimers & Gurevych (2019). Sentence-BERT. ACL.
 	
