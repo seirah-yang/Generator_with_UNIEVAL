@@ -233,8 +233,13 @@ Exports a UNIEVAL-style compliance table alongside the final document.
 ## 👩‍💻 Author
 
 ### Sora Yang
-    RN, MSN | TA | CRC | DM | AI Developer Trainee @ Alpaco
-    Specialized in Clinical Data, R&D Document Automation, and LLM-driven Compliance Systems
+RN, MSN (Oncology department of a tertiary hospital)
+Experiences : TA | CRC | DM internship 
+ - Clinical Research Coordinator (CRC) : IIT clinical research II/III 
+ - Data Management Associate Intern : handling data management for medical devices,
+                                      e‑CRF/CDISC standards
+End‑to‑End AI developer master bootcamp
+Specialized in Clinical Data, R&D Document Automation, and LLM-driven Compliance Systems
 
 
 
